@@ -22,9 +22,13 @@ public class DaoManager {
     private DaoSession mDaoSession;
 
     private DaoManager(String database) {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(MyApplication.getContext(), database, null);
-        DaoMaster mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+        //自定义为了 升级数据库
+        MyOpenHelper helper = new MyOpenHelper(MyApplication.getContext(),database,null);
+        DaoMaster mDaoMaster = new DaoMaster(helper.getWritableDatabase());
         mDaoSession = mDaoMaster.newSession();
+//        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(MyApplication.getContext(), database, null);
+//        DaoMaster mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+//        mDaoSession = mDaoMaster.newSession();
     }
 
     public DaoSession getSession() {

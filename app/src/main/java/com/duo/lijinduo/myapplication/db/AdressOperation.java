@@ -34,9 +34,9 @@ public class AdressOperation {
      * id不能重复
      */
     public void insertAddress() {
-        Address address = new Address(null, "黑龙江", "鸡西市");
+        Address address = new Address(null, "黑龙江", "鸡西市","新的字段");
         addressDao.insert(address);
-        Address address1 = new Address(null, "浙江省", "杭州市");
+        Address address1 = new Address(null, "浙江省", "杭州市","新的字段");
         addressDao.insert(address1);
     }
 
@@ -48,7 +48,7 @@ public class AdressOperation {
                 .orderAsc(AddressDao.Properties.Id)
                 .build().list();
         for (int i = 0; i < addressList.size(); i++) {
-            Log.d("查询的数据", "query: " + addressList.get(i).getId() + "|" + addressList.get(i).getProvince() + "|" + addressList.get(i).getCity());
+            Log.d("查询的数据", "query: " + addressList.get(i).getId() + "|" + addressList.get(i).getProvince() + "|" + addressList.get(i).getCity()+"|"+addressList.get(i).getStr());
         }
     }
 

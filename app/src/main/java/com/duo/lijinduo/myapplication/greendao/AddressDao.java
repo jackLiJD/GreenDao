@@ -27,6 +27,7 @@ public class AddressDao extends AbstractDao<Address, Long> {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property Province = new Property(1, String.class, "province", false, "PROVINCE");
         public final static Property City = new Property(2, String.class, "City", false, "CITY");
+        public final static Property Str = new Property(3, String.class, "str", false, "STR");
     };
 
 
@@ -44,7 +45,8 @@ public class AddressDao extends AbstractDao<Address, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"ADDRESS\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
                 "\"PROVINCE\" TEXT," + // 1: province
-                "\"CITY\" TEXT);"); // 2: City
+                "\"CITY\" TEXT," + // 2: City
+                "\"STR\" TEXT);"); // 3: str
     }
 
     /** Drops the underlying database table. */
@@ -71,6 +73,11 @@ public class AddressDao extends AbstractDao<Address, Long> {
         if (City != null) {
             stmt.bindString(3, City);
         }
+ 
+        String str = entity.getStr();
+        if (str != null) {
+            stmt.bindString(4, str);
+        }
     }
 
     @Override
@@ -91,6 +98,11 @@ public class AddressDao extends AbstractDao<Address, Long> {
         if (City != null) {
             stmt.bindString(3, City);
         }
+ 
+        String str = entity.getStr();
+        if (str != null) {
+            stmt.bindString(4, str);
+        }
     }
 
     @Override
@@ -103,7 +115,8 @@ public class AddressDao extends AbstractDao<Address, Long> {
         Address entity = new Address( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // province
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // City
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // City
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // str
         );
         return entity;
     }
@@ -113,6 +126,7 @@ public class AddressDao extends AbstractDao<Address, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setProvince(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setCity(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setStr(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     @Override

@@ -104,4 +104,14 @@
         android:layout_toEndOf="@+id/button13"
         android:layout_toRightOf="@+id/button13"
         android:text="删除地址" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜索Raw文件夹下文件"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2" />
 </RelativeLayout>

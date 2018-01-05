@@ -60,6 +60,8 @@ public class UserOperation {
 
     /**
      *从数据库中删除说有王昭君的数据
+     * (唯一参数那种 userid或者身份证号)
+     * 不可重复
      */
     public void clearWangZhaoJun(){
         User findUser = userDao.queryBuilder().where(UserDao.Properties.Name.eq("王昭君")).build().unique();
@@ -114,7 +116,7 @@ public class UserOperation {
         userDao.insert(user7);
         User user8 = new User(null, "王昭君", 158);
         userDao.insert(user8);
-        User user9 = new User(null, "QQ飞车", 163);
+        User user9 = new User(null, null, 0);
         userDao.insert(user9);
         User user10 = new User(null, "wangwu", 165);
         userDao.insert(user10);

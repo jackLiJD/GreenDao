@@ -51,8 +51,4 @@ public class User {
     @Generated(hash = 586692638)
     public User() {
     }
-
-
-
-
 }

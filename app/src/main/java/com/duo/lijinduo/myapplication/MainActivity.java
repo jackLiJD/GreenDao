@@ -2,11 +2,14 @@ package com.duo.lijinduo.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.duo.lijinduo.myapplication.db.AdressOperation;
 import com.duo.lijinduo.myapplication.db.UserOperation;
+
+import java.lang.reflect.Field;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     @Bind(R.id.button2)
     Button button2;
+    @Bind(R.id.button3)
+    Button button3;
 
     private UserOperation userOperation = UserOperation.getUserDao();
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.button, R.id.button2,R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14, R.id.button15, R.id.button16, R.id.button17, R.id.button18})
+    @OnClick({R.id.button, R.id.button2,R.id.button3,R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14, R.id.button15, R.id.button16, R.id.button17, R.id.button18})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.button10:
@@ -84,9 +89,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button2:
                 adressOperation.clear();
                 break;
+            case R.id.button3:
+                qRawName();
+                break;
         }
     }
 
+    private void qRawName() {
+        Field[] fields = R.raw.class.getDeclaredFields();
+        String rawName;
+        for (int i = 0; i < fields.length; i++) {
+            try {
+                rawName = fields[i].getName();
+                Log.d("读取的数据", "-----------rawName="+rawName+"----------");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 }

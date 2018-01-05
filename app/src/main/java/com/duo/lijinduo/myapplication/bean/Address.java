@@ -22,6 +22,8 @@ public class Address {
 
     private String City;
 
+    private String str;
+
     public String getCity() {
         return this.City;
     }
@@ -46,11 +48,20 @@ public class Address {
         this.Id = Id;
     }
 
-    @Generated(hash = 1820625406)
-    public Address(Long Id, String province, String City) {
+    public String getStr() {
+        return this.str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    @Generated(hash = 275067651)
+    public Address(Long Id, String province, String City, String str) {
         this.Id = Id;
         this.province = province;
         this.City = City;
+        this.str = str;
     }
 
     @Generated(hash = 388317431)
